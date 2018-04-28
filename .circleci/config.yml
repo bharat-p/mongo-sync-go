@@ -1,0 +1,21 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: bepsays/ci-goreleaser:0.34.2-10
+    working_directory: /go/src/github.com/bharat-p/mongo-sync-go
+    steps:
+      - checkout
+      - run:
+            command: |
+                goreleaser
+workflows:
+  version: 2
+  release:
+      jobs:
+        - build:
+            filters:
+              tags:
+                only: /v[0-9]+(\.[0-9]+)*(-.*)*/
+              branches:
+                ignore: /.*/

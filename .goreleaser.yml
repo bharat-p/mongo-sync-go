@@ -1,0 +1,27 @@
+# .goreleaser.yml
+# Build customization
+# go run -ldflags "-X github.com/bharat-p/mongo-sync-go/cmd.versionString=0.1.0 -X github.com/bharat-p/mongo-sync-go/cmd.buildDate=$BUILD" main.go version
+git:
+  short_hash: true
+builds:
+- env:
+    - CGO_ENABLED=0
+  binary: mongo-sync-go
+  goos:
+    - linux
+    - darwin
+  goarch:
+    - 386
+    - amd64
+  # Default is `-s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}}`.
+  #ldflags: -s -w -X main.build={{.Version}}
+brew:
+  commit_author:
+    name: releasebot
+    email: 13206972+bharat-p@users.noreply.github.com
+  github:
+    owner: bharat-p
+    name: homebrew-tap
+  folder: Formula
+  homepage:  https://github.com/bharat-p/mongo-sync-go/blob/master/README.md
+  description: Sync remote/local mongo database

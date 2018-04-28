@@ -1,0 +1,18 @@
+general:
+    mongorestore_options: "" # additional options to pass to mongorestore command
+    mongodump_options: "" # additional options to pass to mongodump command
+    
+remote:
+    host: localhost
+    port: 27017
+    username: ""
+    password: ""
+    authDatabase: admin
+
+local:
+    host: localhost
+    port: 27017
+    username: ""
+    password: ""
+    authDatabase: admin
+
